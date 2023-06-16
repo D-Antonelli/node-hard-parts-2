@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "nodemon": "^2.0.22",
     "through2": "^3.0.1"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "streams": "cd streams && node streams.js "
   },
   "author": ""
