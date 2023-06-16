@@ -4,7 +4,8 @@ const fs = require('fs');
 function doOnRequest(request, response){
   // Send back a message saying "Welcome to Twitter"
   // code here...
-  response.end("yo")  
+  response.end("Welcome to Twitter")
+  // response.end("yo")
   if (request.method === 'GET' && request.url === '/') {
     // read the index.html file and send it back to the client
     // code here...
