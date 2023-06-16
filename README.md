@@ -18,13 +18,13 @@ All of this information can be gathered based on the information in the request 
 
 ## How do I get started?
 
-1. Install dependencies.
+- [x] 1. Install dependencies.
 
 ````
 npm install
 ````
 
-2. A node http ‘server’ has been started for you in the `server.js` file. A GET request from the user’s browser is usually designed to get content/data from a server. Add code to have the server serve a message “Welcome to Twitter” back to the client (the user). In this question, ignore the conditional logic for now
+- [x] 2. A node http ‘server’ has been started for you in the `server.js` file. A GET request from the user’s browser is usually designed to get content/data from a server. Add code to have the server serve a message “Welcome to Twitter” back to the client (the user). In this question, ignore the conditional logic for now
 
 For this exercise, do not use Express or any other Node framework. Run your server with the following command:
 
@@ -39,13 +39,13 @@ Then visit `http://localhost:3000/`. To exit the server, press `ctrl+C`.
  
 (optional) Alternatively, Nodemon is a utility that will automatically restart your server whenever you save changes to a file. Install nodemon by running ```npm install --save-dev nodemon``` and then run your server using the following command: ```nodemon server.js```. Servers running with nodemon do not need to be restarted when changes are made to the source code.
 
-3. Now we are going to investigate the Node auto-inserted object into the callback function. It represents the request from the user. 
+- [x] 3. Now we are going to investigate the Node auto-inserted object into the callback function. It represents the request from the user. 
 
 Write logic in the conditional to send the `index.html` page on a GET request to the url `/` by introspecting the request object. Look up the `fs.readFileSync` function. (Note that in future sections we will be using the asynchronous and non-blocking `fs.readFile` rather than the synchronous and blocking `fs.readFileSync`.) 
 
-5. When you successfully serve the index.html page, have your server respond to a POST request to the url `/sayHi` with the text `hi back to you!`. (Notice how we've set up the POST request functionality for you in index.html: what happens when we click the button "Say Hi"? Check the browser console.)
+- [x] 5. When you successfully serve the index.html page, have your server respond to a POST request to the url `/sayHi` with the text `hi back to you!`. (Notice how we've set up the POST request functionality for you in index.html: what happens when we click the button "Say Hi"? Check the browser console.)
 
-6. A POST request is usually designed to store data on a server. Modify your code for the POST request to `/sayHi` so that the server adds the text `Somebody said hi.\n` to a file named `hi_log.txt`. Look up the `fs.appendFileSync` to complete this task. (Note: ```fs.appendFileSync``` has an asynchronous counterpart called ```fs.appendFile``` which we will be using in future units). After the file operation have the server respond with the string `hi back to you!` Now happens when we click the button "Say Hi"?
+- [x] 6. A POST request is usually designed to store data on a server. Modify your code for the POST request to `/sayHi` so that the server adds the text `Somebody said hi.\n` to a file named `hi_log.txt`. Look up the `fs.appendFileSync` to complete this task. (Note: ```fs.appendFileSync``` has an asynchronous counterpart called ```fs.appendFile``` which we will be using in future units). After the file operation have the server respond with the string `hi back to you!` Now happens when we click the button "Say Hi"?
 
 7. A POST request is usually accompanied by a request body. The body is a string that usually represents the data we want to store. The request body can sometimes be very long depending on the volume of data that needs to be stored. Thus, the request body comes to the server in "chunks" at a time. These "chunks" flow from the client to the server in what we call a "stream."
 Have your server respond to a POST request to `/greeting`. One of the buttons in index.html makes a POST to `/greeting` with the body `hello`, and the another makes a POST to `/greeting` with the body `what's up` (which buttons are these? Check index.html). If the request body is `hello`, then respond with `hello there!`. If the request body is `what's up`, then respond with `the sky`. Otherwise, respond with `good morning`.
