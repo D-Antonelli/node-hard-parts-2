@@ -1,5 +1,8 @@
 const http = require('http');
 const fs = require('fs');
+const { openSync, closeSync, appendFileSync } = require('fs');
+
+let fd;
 
 function doOnRequest(request, response){
   // Send back a message saying "Welcome to Twitter"
@@ -15,6 +18,17 @@ function doOnRequest(request, response){
   }
   else if (request.method === 'POST' && request.url === '/sayHi') {
     // code here...
+    try {
+      fd = openSync('hi_log.txt', 'a');
+      appendFileSync(fd, 'Somebody said hi.\n');
+      console.log('The "Somebody said hi.\n" was appended to file!');
+    } catch (err) {
+      console.log(err)
+      /* Handle the error */
+    } finally {
+      if (fd !== undefined)
+        closeSync(fd);
+    } 
     response.end("hi back to you!")
   }
   else if (request.method === 'POST' && request.url === '/greeting') {
