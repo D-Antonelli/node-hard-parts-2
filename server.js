@@ -15,7 +15,7 @@ function doOnRequest(request, response){
   }
   else if (request.method === 'POST' && request.url === '/sayHi') {
     // code here...
-    
+    response.end("hi back to you!")
   }
   else if (request.method === 'POST' && request.url === '/greeting') {
     // accumulate the request body in a series of chunks
