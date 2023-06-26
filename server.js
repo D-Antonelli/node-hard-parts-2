@@ -75,6 +75,8 @@ function doOnRequest(request, response){
   else {
     // Handle 404 error: page not found
     // code here...
+    response.statusCode = 404
+    response.end('Error: Not Found')
     
   }
 }
