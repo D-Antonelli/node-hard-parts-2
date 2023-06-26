@@ -34,6 +34,23 @@ function doOnRequest(request, response){
   else if (request.method === 'POST' && request.url === '/greeting') {
     // accumulate the request body in a series of chunks
     // code here...
+    let body = []
+
+    request.on('data', (chunk) => {
+      body.push(chunk)
+    }).on('end', () => {
+      body = Buffer.concat(body).toString();
+      // at this point, `body` has the entire request body stored in it as a string
+      if (body === "hello") {
+        response.end("hello there!")
+      } 
+      else if (body === "what's up") {
+        response.end("the sky")
+      } else {
+        response.end("good morning")
+      }
+
+    })
     
   }
   else {
