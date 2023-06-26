@@ -4,6 +4,22 @@ const { openSync, closeSync, appendFileSync } = require('fs');
 
 let fd;
 
+function logToFile(filename = 'hi_log.txt', log) {
+  if (typeof filename !== "string" && typeof log !== 'string' && !fs.existsSync(filename)) {
+    return
+  }
+  try {
+    fd = openSync(filename, 'a');
+    appendFileSync(fd, log);
+  } catch (err) {
+    console.log(err)
+    /* Handle the error */
+  } finally {
+    if (fd !== undefined)
+      closeSync(fd);
+  } 
+}
+
 function doOnRequest(request, response){
   // Send back a message saying "Welcome to Twitter"
   // code here...
@@ -41,6 +57,9 @@ function doOnRequest(request, response){
     }).on('end', () => {
       body = Buffer.concat(body).toString();
       // at this point, `body` has the entire request body stored in it as a string
+
+      logToFile('hi_log.txt', `${body}\n`)
+
       if (body === "hello") {
         response.end("hello there!")
       } 
