@@ -32,6 +32,9 @@ function doOnRequest(request, response){
     // fs.createReadStream()
 
   }
+  else if (request.method === 'GET' && request.url === '/style.css') {
+    response.end(fs.readFileSync('style.css'))
+  }
   else if (request.method === 'POST' && request.url === '/sayHi') {
     // code here...
     try {
