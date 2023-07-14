@@ -10,6 +10,7 @@ Display only this page
 <button id='hiButton'>Say hi!</button>
 <button id='helloButton'>Greet the server with hello!</button>
 <button id='whatsUpButton'>Greet the server with what's up!</button>
+<button id='updateButton'>Ask the server to update text!</button>
 </body>
 <script>
 var xmlHttp = new XMLHttpRequest();
@@ -38,6 +39,13 @@ whatsUpButton.onclick = function() {
   xmlHttp.open('POST','/greeting', true);
   xmlHttp.setRequestHeader('Content-type','text');
   xmlHttp.send('what\'s up'); // what is receiving this greeting?
+}
+
+updateButton.onclick = function() {
+  // what route are we sending this request to?
+  xmlHttp.open('PUT','/update', true);
+  xmlHttp.setRequestHeader('Content-type','text');
+  xmlHttp.send('updated message'); // what is receiving this greeting?
 }
 
 </script>

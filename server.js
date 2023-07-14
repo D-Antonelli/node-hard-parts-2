@@ -3,9 +3,11 @@ const fs = require('fs');
 const { openSync, closeSync, appendFileSync } = require('fs');
 
 let fd;
+let filename = "hi_log.txt"
 
-function logToFile(filename = 'hi_log.txt', log) {
-  if (typeof filename !== "string" && typeof log !== 'string' && !fs.existsSync(filename)) {
+function writeFile(filename, log) {
+  if (typeof filename !== "string" && typeof log !== 'string') {
+    console.log("Write file: incorrect param type")
     return
   }
   try {
@@ -13,11 +15,21 @@ function logToFile(filename = 'hi_log.txt', log) {
     appendFileSync(fd, log);
   } catch (err) {
     console.log(err)
-    /* Handle the error */
   } finally {
     if (fd !== undefined)
       closeSync(fd);
   } 
+}
+
+function updateFile(filename, log) {
+  if (typeof filename !== "string" && typeof log !== 'string') {
+    console.log("Update file: incorrect param type")
+    return
+  }
+  fs.writeFile(filename, log, function(err){
+    if(err) return console.log(err);
+    console.log('The file has been overwritten');
+});
 }
 
 function doOnRequest(request, response){
@@ -35,19 +47,24 @@ function doOnRequest(request, response){
   else if (request.method === 'GET' && request.url === '/style.css') {
     response.end(fs.readFileSync('style.css'))
   }
+  else if (request.method === 'PUT' && request.url === '/update') {
+    let body = []
+    try {
+      request.on('data', (chunk) => {
+        body.push(chunk)
+      }).on('end', () => {
+        body = Buffer.concat(body).toString();
+        updateFile(filename, body)
+        response.end("Updated")
+      })
+    } catch {
+      console.log("error")
+    }
+    
+  }
   else if (request.method === 'POST' && request.url === '/sayHi') {
     // code here...
-    try {
-      fd = openSync('hi_log.txt', 'a');
-      appendFileSync(fd, 'Somebody said hi.\n');
-      console.log('The "Somebody said hi.\n" was appended to file!');
-    } catch (err) {
-      console.log(err)
-      /* Handle the error */
-    } finally {
-      if (fd !== undefined)
-        closeSync(fd);
-    } 
+    writeFile(filename, 'Somebody said hi.\n')
     response.end("hi back to you!")
   }
   else if (request.method === 'POST' && request.url === '/greeting') {
@@ -61,7 +78,7 @@ function doOnRequest(request, response){
       body = Buffer.concat(body).toString();
       // at this point, `body` has the entire request body stored in it as a string
 
-      logToFile('hi_log.txt', `${body}\n`)
+      writeFile(filename, `${body}\n`)
 
       if (body === "hello") {
         response.end("hello there!")
