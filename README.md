@@ -73,9 +73,9 @@ Start your node server and visit `http://localhost:3000/` to test out whether yo
 
 The acronym `CRUD` (Create, Read, Update, Delete) refers to the four major functions implemented in persistent data applications (this will become more clear when we start working with databases). Although there are many different types of request methods to choose from (see the request method drop down in Postman for varying options), there are four key request methods that complement CRUD functionality. Lucky for you, you've already used two of them! `POST` is the request method used to `Create` new data in storage. `GET` is the method used to `Read` existing data. `PUT` is the method to `Update` existing data, and lastly `DELETE` is the method used to `Delete` existing data. Let's try implementing `PUT` and `DELETE`.
 
-1. Add a button to `index.html` that makes a PUT request (you can choose the url). Send the string `updated message`. Have the server, upon receiving this request, replace the contents of `hi_log.txt` with the updated message.
+- [x]  Add a button to `index.html` that makes a PUT request (you can choose the url). Send the string `updated message`. Have the server, upon receiving this request, replace the contents of `hi_log.txt` with the updated message.
 
-2. Add a button to `index.html` that makes a DELETE request (you can choose the url). Have the server, upon receiving this request, delete the `hi_log.txt` file.
+- [x]  Add a button to `index.html` that makes a DELETE request (you can choose the url). Have the server, upon receiving this request, delete the `hi_log.txt` file.
 
 ### Templating Engines:
 
