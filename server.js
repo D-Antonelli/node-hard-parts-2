@@ -32,6 +32,12 @@ function updateFile(filename, log) {
 });
 }
 
+function deleteFile(filename) {
+    fs.rm(filename, function (err) {
+      console.log(err)
+    })
+}
+
 function doOnRequest(request, response){
   // Send back a message saying "Welcome to Twitter"
   // code here...
@@ -46,6 +52,10 @@ function doOnRequest(request, response){
   }
   else if (request.method === 'GET' && request.url === '/style.css') {
     response.end(fs.readFileSync('style.css'))
+  }
+  else if (request.method === 'DELETE' && request.url === '/delete') {
+    deleteFile(filename)
+    response.end("File deleted!")
   }
   else if (request.method === 'PUT' && request.url === '/update') {
     let body = []

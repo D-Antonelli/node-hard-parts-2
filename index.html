@@ -11,6 +11,7 @@ Display only this page
 <button id='helloButton'>Greet the server with hello!</button>
 <button id='whatsUpButton'>Greet the server with what's up!</button>
 <button id='updateButton'>Ask the server to update text!</button>
+<button id='deleteButton'>Ask the server to delete text!</button>
 </body>
 <script>
 var xmlHttp = new XMLHttpRequest();
@@ -46,6 +47,12 @@ updateButton.onclick = function() {
   xmlHttp.open('PUT','/update', true);
   xmlHttp.setRequestHeader('Content-type','text');
   xmlHttp.send('updated message'); // what is receiving this greeting?
+}
+
+deleteButton.onclick = function() {
+  xmlHttp.open('DELETE', '/delete', true);
+  xmlHttp.setRequestHeader('Content-type','text');
+  xmlHttp.send('delete messages');
 }
 
 </script>
