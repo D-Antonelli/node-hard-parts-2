@@ -5,19 +5,16 @@ const through = require('through2');
 const readPoemStream = []
 
 fs.createReadStream('on-joy-and-sorrow-emoji.txt')
-  .pipe(through(function (chunk, enc, callback) {
-    for (let i = 0; i < chunk.length; i++)
-    // hexadecimal representation of characters.
-        this.push(chunk)
-        callback()
-   }))
-   .on('data', (data) => {
-        readPoemStream.push(data.toString('utf8'))
-    })
+  .pipe(through.obj(function (chunk, enc, callback) {
+    this.push(chunk.toString('utf8'))
+    callback()
+  }))
+  .on('data', (data) => {
+    readPoemStream.push(data)
+  })
   .on('end', () => {
     console.log(readPoemStream)
   })
-//   .pipe(fs.createWriteStream('out.txt'))
 
 
 
