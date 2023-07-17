@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "marked": "^5.1.1",
     "nodemon": "^2.0.22",
     "through2": "^3.0.1"
   },
