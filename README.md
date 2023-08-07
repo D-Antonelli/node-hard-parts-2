@@ -89,7 +89,7 @@ The acronym `CRUD` (Create, Read, Update, Delete) refers to the four major funct
     - [x] Create a readable stream to import the file `on-joy-and-sorrow-emoji.txt`
     - [x] On the 'data' event, console.log the data received (what do you notice?)
     - [x] How can we decode this data so it shows up in the console?
-    - [ ] Update our console logs so ':)' is replaced with 'joy' and ':(' is replaced with 'sorrow'
+    - [x] Update our console logs so ':)' is replaced with 'joy' and ':(' is replaced with 'sorrow'
 2. [Writable streams](https://nodejs.org/api/stream.html#stream_writable_streams)
    - [ ] Create a writable stream exporting to `on-joy-and-sorrow-fixed.txt`
    - [ ] Pipe the readable stream to the writable stream
