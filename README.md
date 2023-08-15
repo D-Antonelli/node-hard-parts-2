@@ -94,6 +94,6 @@ The acronym `CRUD` (Create, Read, Update, Delete) refers to the four major funct
    - [x] Create a writable stream exporting to `on-joy-and-sorrow-fixed.txt`
    - [x] Pipe the readable stream to the writable stream
 3. [Transform streams](https://nodejs.org/api/stream.html#stream_duplex_and_transform_streams) implement a readable and writable interface for modifying input from readable streams
-   - [ ] Create a transform stream to modify incoming data, replacing ':)' with 'joy' and ':(' with 'sorrow'.  
+   - [x] Create a transform stream to modify incoming data, replacing ':)' with 'joy' and ':(' with 'sorrow'.  
    **NOTE**: The [through2](https://www.npmjs.com/package/through2) library is a useful abstraction for this (it's already been imported for you)
-   - [ ] Pipe the readable stream to the transform stream you just created, and then pipe the result to the writable stream
+   - [x] Pipe the readable stream to the transform stream you just created, and then pipe the result to the writable stream
